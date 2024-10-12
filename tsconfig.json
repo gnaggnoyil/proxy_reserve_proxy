@@ -1,0 +1,31 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"target": "ES2023",
+		"module": "Node16",
+		"outDir": "build",
+
+		"allowUnreachableCode": false,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noPropertyAccessFromIndexSignature": false,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+
+		"allowArbitraryExtensions": false,
+		"allowImportingTsExtensions": false,
+		"allowUmdGlobalAccess": false,
+
+		"removeComments": true,
+		//"verbatimModuleSyntax": true
+		"verbatimModuleSyntax": false
+	},
+
+	"include": [
+		"src/**/*.ts"
+	]
+}
