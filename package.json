@@ -6,7 +6,7 @@
     "@types/node": "^22.5.4"
   },
   "scripts": {
-	"build": "tsc && uglifyjs build/proxy_reserve_proxy.js -c -m --toplevel -o bin/proxy_reserve_proxy.ugly.js",
+	"build": "tsc && mkdir -p bin && uglifyjs build/proxy_reserve_proxy.js -c -m --toplevel -o bin/proxy_reserve_proxy.ugly.js",
 	"clean_build": "rm build/proxy_reserve_proxy.js bin/proxy_reserve_proxy.ugly.js"
   },
   "files": [
