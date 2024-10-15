@@ -27,14 +27,6 @@ namespace utils_{
 		});
 	}
 
-//	function request_end(req: http.ClientRequest): Promise<void>{
-//		return new Promise<void>((resolve) => {
-//			req.end(() => {
-//				resolve();
-//			});
-//		});
-//	}
-
 	// Assumes that req is not used by other http methods at the same time.
 	function request_response(req: http.ClientRequest): Promise<http.IncomingMessage>{
 		return new Promise<http.IncomingMessage>((resolve, reject) => {
@@ -132,11 +124,6 @@ namespace utils_{
 			}
 			this.m_pending_continuations = [];
 		}
-
-//		private async *foo(): AsyncGenerator<any, void, void>{
-//			yield 3;
-//			return ;
-//		}
 
 		public read(this: readable_data): Promise<read_chunk_type>{
 			return new Promise<read_chunk_type>((resolve, reject) => {
@@ -337,11 +324,6 @@ namespace utils_{
 			return ret;
 		})();
 		let actual_req = https.request(actual_opt);
-//		const client_header = actual_req.getHeaders();
-//		console.log('client_header: %s', client_header);
-//		for(const key in client_header){
-//			console.log('client_header key: %s , value %s', key, client_header[key]);
-//		}
 		if(options.headers !== undefined){
 			for(const [name, value] of Object.entries(options.headers)){
 				if(value !== undefined){
@@ -385,28 +367,6 @@ namespace utils_{
 	}
 
 } // namespace utils_
-
-//async function foo(): Promise<void>{
-//	const {server_status, server_header, server_body} = await utils_.https_proxy_read({
-////		host: 'www.google.com',
-//		host: 'arch.asus-linux.org',
-//		port: 443,
-//		method: 'GET',
-//		//path: '/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-//		path: '/',
-//		proxy_host: '127.0.0.1',
-//		proxy_port: 1081
-//	});
-//	console.log('server_status: %s', server_status);
-//	console.log('server_header: %s', server_header);
-//	for await(const value of server_body){
-//		console.log(value);
-//		console.log('--------');
-//	}
-//	return ;
-//}
-
-//foo();
 
 class local_http_error{
 	public status_code: number;
@@ -649,7 +609,7 @@ let server = http.createServer(catch_local_http_error(async (
 
 	const res_headers: http.OutgoingHttpHeaders = server_header;
 	const server_status_message = server_status.message;
-	if(server_status.message === server_status_message){
+	if(server_status_message === undefined){
 		res.writeHead(server_status.code, res_headers);
 	}
 	else{
