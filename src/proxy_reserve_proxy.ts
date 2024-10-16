@@ -61,7 +61,7 @@ namespace utils_{
 	export class readable_data{
 		private m_stream: stream.Readable;
 		private m_pending_data: read_chunk_type[];
-		private m_pending_continuations: [(value: read_chunk_type | PromiseLike<any>) => void, (reason?: any) => void][];
+		private m_pending_continuations: [(value: read_chunk_type | PromiseLike<read_chunk_type>) => void, (reason?: any) => void][];
 		private m_ending: true | Error | undefined;
 
 		public constructor(stream: stream.Readable){
@@ -136,7 +136,7 @@ namespace utils_{
 
 				assert.ok(this.m_pending_data.length === 0);
 				//assert.ok(this.m_pending_continuations.length >= 0);
-				if(this.m_ending != undefined){
+				if(this.m_ending !== undefined){
 					assert.ok(this.m_pending_continuations.length === 0);
 					reject_end_or_error(this.m_ending, reject);
 					return ;
